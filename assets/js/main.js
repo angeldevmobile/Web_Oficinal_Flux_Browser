@@ -1,8 +1,3 @@
-/* ============================================================
-   Flux Browser — Shared JavaScript
-   ============================================================ */
-
-// ── Active nav link on scroll ──────────────────────────────
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id], [data-section]');
   const navLinks = document.querySelectorAll('a[href^="#"]');
@@ -22,7 +17,6 @@ function initScrollSpy() {
   sections.forEach(s => observer.observe(s));
 }
 
-// ── Fade-up on scroll ──────────────────────────────────────
 function initFadeUp() {
   const els = document.querySelectorAll('.fade-up');
   if (!els.length) return;
@@ -39,7 +33,6 @@ function initFadeUp() {
   els.forEach(el => observer.observe(el));
 }
 
-// ── Docs sidebar active link ───────────────────────────────
 function initSidebarSpy() {
   const headings = document.querySelectorAll('h2[id], h3[id]');
   const sideLinks = document.querySelectorAll('.sidebar-link[href^="#"]');
@@ -58,7 +51,6 @@ function initSidebarSpy() {
   headings.forEach(h => observer.observe(h));
 }
 
-// ── Mobile menu toggle ─────────────────────────────────────
 function initMobileMenu() {
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
@@ -69,24 +61,20 @@ function initMobileMenu() {
     btn.setAttribute('aria-expanded', open);
   });
 
-  // Close on link click
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => menu.classList.add('hidden'));
   });
 }
 
-// ── Download button counter ────────────────────────────────
 function initDownloadBtn() {
   const btn = document.getElementById('download-btn');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    // Track download (local only, no analytics)
     const count = (parseInt(localStorage.getItem('flux_dl_count') || '0')) + 1;
     localStorage.setItem('flux_dl_count', count);
   });
 }
 
-// ── Copy code blocks ───────────────────────────────────────
 function initCodeCopy() {
   document.querySelectorAll('.code-block').forEach(block => {
     const wrapper = document.createElement('div');
@@ -113,7 +101,6 @@ function initCodeCopy() {
   });
 }
 
-// ── Typewriter effect ──────────────────────────────────────
 function initTypewriter(selector, texts, speed = 80, pause = 2500) {
   const el = document.querySelector(selector);
   if (!el) return;
@@ -133,7 +120,6 @@ function initTypewriter(selector, texts, speed = 80, pause = 2500) {
   tick();
 }
 
-// ── Init all ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initFadeUp();
