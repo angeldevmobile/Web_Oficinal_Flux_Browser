@@ -1,91 +1,127 @@
-# Flux Browser — Official Website
+# Flux Browser — Sitio Oficial
 
-Official landing page and documentation site for Flux Browser, a Windows desktop browser built for speed and simplicity.
+Página de inicio y documentación oficial de Flux Browser, un navegador para Windows con motor propio escrito en **Rust**, interfaz **React** y cero telemetría.
 
-Version: v1.0.0-beta.1 | Platform: Windows 10 / 11
+Versión: v1.0.0-beta | Plataforma: Windows 10 / 11
 
 ---
 
-## Project Structure
+## Estructura del proyecto
 
 ```
 Oficial_flux_web/
-├── index.html              # Landing page
+├── index.html                   # Página de inicio
 ├── assets/
 │   ├── css/
-│   │   └── flux.css        # Global styles
+│   │   └── flux.css             # Estilos globales
+│   ├── images/
+│   │   ├── flux_logo.png        # Logo de la app
+│   │   └── logo_flux.ico        # Favicon
 │   └── js/
-│       └── main.js         # Shared JavaScript
-└── docs/
-    ├── index.html          # Documentation home
-    ├── getting-started.html # Installation guide
-    ├── features.html       # Features overview
-    ├── architecture.html   # Technical architecture
-    └── changelog.html      # Version history
+│       └── main.js              # JavaScript compartido
+├── docs/
+│   ├── index.html               # Inicio de la documentación
+│   ├── getting-started.html     # Guía de instalación
+│   ├── features.html            # Características
+│   ├── architecture.html        # Arquitectura técnica
+│   └── changelog.html           # Historial de versiones
+├── .env                         # Variables de entorno (no se sube)
+├── .gitignore
+├── package.json
+└── vite.config.js
 ```
 
 ---
 
-## Pages
+## Páginas
 
-### Landing page (`index.html`)
-Main entry point of the site. Includes the hero section, feature highlights, and download call to action.
+### Página de inicio (`index.html`)
+Punto de entrada principal. Incluye la sección hero, características, botón de descarga y sección de comentarios de la comunidad conectada a Supabase.
 
-### Documentation (`docs/`)
-Full documentation for the browser, organized into four sections:
+### Documentación (`docs/`)
+Documentación completa organizada en cuatro secciones:
 
-- **Getting Started** — Download and install Flux Browser in under 60 seconds. No complex installers or external dependencies required.
-- **Features** — Overview of built-in capabilities and differentiators.
-- **Architecture** — Technical details about the browser's internal design.
-- **Changelog** — Version history and upcoming roadmap.
+- **Primeros pasos** — Descarga y ejecuta Flux Browser en segundos. Sin instalador.
+- **Características** — Funcionalidades integradas y diferenciadores.
+- **Arquitectura** — Detalles técnicos del diseño interno del navegador.
+- **Changelog** — Historial de versiones y próximas mejoras.
 
 ---
 
-## Tech Stack
+## Tecnologías
 
-| Technology | Purpose |
+| Tecnología | Uso |
 |---|---|
-| HTML5 | Page structure |
-| Tailwind CSS (CDN) | Utility-first styling |
-| Vanilla JavaScript | UI interactions |
-| Inter (Google Fonts) | Typography |
-| CSS custom properties | Animations and theming |
+| HTML5 | Estructura de páginas |
+| Tailwind CSS (CDN) | Estilos utilitarios |
+| JavaScript (ESM) | Interacciones de UI |
+| Vite | Servidor de desarrollo y build de producción |
+| Supabase | Backend de comentarios de la comunidad |
+| Inter (Google Fonts) | Tipografía |
 
 ---
 
-## JavaScript Modules (`assets/js/main.js`)
+## Variables de entorno
 
-| Function | Description |
-|---|---|
-| `initScrollSpy()` | Highlights the active nav link based on the visible section |
-| `initFadeUp()` | Triggers fade-in animation on elements with `.fade-up` as they enter the viewport |
-| `initSidebarSpy()` | Highlights the active sidebar link in documentation pages |
-| `initMobileMenu()` | Toggles the mobile navigation menu open and closed |
-| `initDownloadBtn()` | Tracks download button clicks locally via `localStorage` |
-| `initCodeCopy()` | Adds a copy button to elements with `.code-block` |
-| `initTypewriter(selector, texts, speed, pause)` | Animates a typewriter effect cycling through an array of strings |
+Crea un archivo `.env` en la raíz con las siguientes variables (nunca lo subas al repositorio):
 
-All functions are initialized on `DOMContentLoaded`.
+```env
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_KEY=tu-anon-key-publica
+```
+
+En Render u otro proveedor de hosting, configura estas mismas variables desde el panel de variables de entorno.
 
 ---
 
-## Local Development
-
-No build step required. Open any `.html` file directly in a browser, or serve with a local server:
+## Desarrollo local
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
+## Build de producción
+
+```bash
+npm run build
+```
+
+La salida se genera en la carpeta `dist/`.
+
 ---
 
-## System Requirements
+## Despliegue en Render
 
-- Windows 10 or Windows 11
-- Modern browser for viewing the site (Chrome, Edge, Firefox)
+| Configuración | Valor |
+|---|---|
+| Build command | `npm run build` |
+| Publish directory | `dist` |
+| Variables de entorno | `VITE_SUPABASE_URL`, `VITE_SUPABASE_KEY` |
 
 ---
 
-## Repository
+## Módulos JavaScript (`assets/js/main.js`)
+
+| Función | Descripción |
+|---|---|
+| `initScrollSpy()` | Resalta el enlace activo del menú según la sección visible |
+| `initFadeUp()` | Activa la animación de entrada en elementos con `.fade-up` |
+| `initSidebarSpy()` | Resalta el enlace activo del sidebar en las páginas de documentación |
+| `initMobileMenu()` | Abre y cierra el menú de navegación móvil |
+| `initDownloadBtn()` | Registra clics en el botón de descarga vía `localStorage` |
+| `initCodeCopy()` | Agrega un botón de copiar a elementos con `.code-block` |
+| `initTypewriter(selector, texts, speed, pause)` | Anima un efecto de escritura rotando por un array de textos |
+
+---
+
+## Requisitos del sistema
+
+- Windows 10 o Windows 11
+- Navegador moderno para visualizar el sitio (Chrome, Edge, Firefox)
+
+---
+
+## Repositorio
 
 [https://github.com/angeldevmobile/Web_Oficinal_Flux_Browser](https://github.com/angeldevmobile/Web_Oficinal_Flux_Browser)
